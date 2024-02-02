@@ -42,9 +42,11 @@ DatabaseManager::DatabaseManager()
     QSqlRecord record = dayQuery.record();
     qDebug() << "columns number:" << record.count();
 
-    int sunriseTimeIndex = record.indexOf("sunrise_time");
     dayQuery.next();
-    qDebug() << "sunrise time at" << currentDate.toString(Qt::ISODate) << "is" << dayQuery.value(sunriseTimeIndex).toTime();
 
+    int sunriseTimeIndex = record.indexOf("sunrise_time");
+    qDebug() << "sunrise time at" << currentDate.toString(Qt::ISODate) << "is" << dayQuery.value(sunriseTimeIndex).toTime();
+    int sunsetTimeIndex = record.indexOf("sunset_time");
+    qDebug() << "sunset time at" << currentDate.toString(Qt::ISODate) << "is" << dayQuery.value(sunsetTimeIndex).toTime();
 }
 
